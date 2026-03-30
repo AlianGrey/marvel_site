@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
@@ -59,9 +59,22 @@ class CharList extends Component {
         })
     }
 
+    itemRefs = []
+
+    setRef = (ref) => {
+        this.itemRefs.push(ref)
+    }
+
+    focusOnItem = (id) => {
+        this.itemRefs.map(item => item.classList.remove('char__item_selected'))
+        this.itemRefs[id].classList.add('char__item_selected')
+        this.itemRefs[id].focus()
+    }
+
+
     renderItems(arr) {
         return (
-            arr.map((item) => {
+            arr.map((item, i) => {
                 let imgStyle = {'objectFit': 'cover'}
                 if (item.thumbnail === 'https://www.wallpaperflare.com/static/264/707/824/iron-man-the-avengers-robert-downey-junior-tony-wallpaper.jpg') 
                 {
@@ -71,8 +84,19 @@ class CharList extends Component {
                 return (
                     <li 
                     className="char__item" 
+                    tabIndex={0}
                     key={item.id}
-                    onClick={ ()=> this.props.onCharSelected(item.id) }
+                    ref = {this.setRef}
+                    onClick={ ()=> { 
+                        this.props.onCharSelected(item.id);
+                        this.focusOnItem(i) }
+                     }
+                    onKeyDown = { (e) => {
+                        if ( e.key === ' ' || e.key === 'Enter') {
+                            this.props.onCharSelected(item.id);
+                            this.focusOnItem(i)
+                        }
+                    }}
                     >
                         <img src={item.thumbnail} alt={item.name} style={imgStyle}/>
                         <div className="char__name">{item.name}</div>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import MarvelService from '../../services/MarvelService';
+import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
@@ -9,40 +9,25 @@ import defaultUser from '../../resources/img/default_user.jpg'
 
 const RandomChar = () => {
     const [ char, setChar ] = useState({})
-    const [ loading, setLoading ] = useState(true)
-    const [ error, setError ] = useState(false)
-
+    const { loading, error, getCharacter, clearError } = useMarvelService()
+  
     useEffect( () => {
         updateChar()
 
-        const timerId = setInterval(updateChar, 10000);
-        return () => clearInterval(timerId)
+       //const timerId = setInterval(updateChar, 10000);
+       //return () => clearInterval(timerId)
     }, [])
-
-    const marvelService = new MarvelService()
 
     const onCharLoaded = (char) => {
         setChar(char)
-        setLoading(false)
-        setError(false)
-    }
-
-    const onError = () => {
-        setLoading(false)
-        setError(true)
-    }
-
-    const onCharLoading = () => {
-        setLoading(true)
     }
 
     const updateChar = () => {
+        clearError()
         const id = Math.floor( Math.random() * 21)
-        onCharLoading()
-        marvelService
-            .getCharacter(id)
+  
+        getCharacter(id)
             .then(onCharLoaded)
-            .catch(onError)
     }
 
     const errorMessage = error ? <ErrorMessage/> : null

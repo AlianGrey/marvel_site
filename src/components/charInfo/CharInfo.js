@@ -30,7 +30,7 @@ const CharInfo = (props) => {
     }
 
     const onCharLoaded = (char) => {
-        setChar(char)
+        setChar(char) 
     }
 
     const skeleton = char || loading || error ? null : <Skeleton/>

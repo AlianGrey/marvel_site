@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import defaultUserImg from '../../resources/img/default_user.jpg'
 
 import './charList.scss';
@@ -47,7 +48,7 @@ const CharList = (props) => {
 
 
     function renderItems(arr) {
-        return (
+        return (   
             arr.map((item, i) => {
                 let imgStyle = {'objectFit': 'cover'}
                 if (item.thumbnail === 'https://www.wallpaperflare.com/static/264/707/824/iron-man-the-avengers-robert-downey-junior-tony-wallpaper.jpg') 
@@ -56,25 +57,27 @@ const CharList = (props) => {
                     item.thumbnail=`${defaultUserImg}` //'https://cdnn21.img.ria.ru/images/07e4/0b/17/1585982208_0:0:1400:788_768x0_80_0_0_32b7ed91bc6331898009e86f8eecb870.jpg'
                 }
                 return (
-                    <li 
-                    className="char__item" 
-                    tabIndex={0}
-                    key={item.id}
-                    ref = {el => itemRefs.current[i] = el}
-                    onClick={ ()=> { 
-                        props.onCharSelected(item.id);
-                        focusOnItem(i) }
-                     }
-                    onKeyDown = { (e) => {
-                        if ( e.key === ' ' || e.key === 'Enter') {
+                    <CSSTransition key={item.id} timeout={600} classNames="char__item" >
+                        <li 
+                        className="char__item" 
+                        tabIndex={0}
+                        key={item.id}
+                        ref = {el => itemRefs.current[i] = el}
+                        onClick={ ()=> { 
                             props.onCharSelected(item.id);
-                            focusOnItem(i)
+                            focusOnItem(i) }
                         }
-                    }}
-                    >
-                        <img src={item.thumbnail} alt={item.name} style={imgStyle}/>
-                        <div className="char__name">{item.name}</div>
-                    </li>
+                        onKeyDown = { (e) => {
+                            if ( e.key === ' ' || e.key === 'Enter') {
+                                props.onCharSelected(item.id);
+                                focusOnItem(i)
+                            }
+                        }}
+                        >
+                            <img src={item.thumbnail} alt={item.name} style={imgStyle}/>
+                            <div className="char__name">{item.name}</div>
+                        </li>
+                    </CSSTransition>
                 )        
             })
         )
@@ -88,9 +91,11 @@ const CharList = (props) => {
         <div className="char__list">
                 {errorMessage}
                 {spinner}
-            <ul className="char__grid">
+{/*             <ul className="char__grid"> */}
+            <TransitionGroup component="ul" className="char__grid">
                 {items}
-            </ul>
+            </TransitionGroup>
+{/*             </ul> */}
             <button 
                 className="button button__main button__long"
                 style = {{'display': charEnded ? 'none' : 'block'}}

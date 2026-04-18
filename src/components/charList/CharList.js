@@ -91,11 +91,10 @@ const CharList = (props) => {
         <div className="char__list">
                 {errorMessage}
                 {spinner}
-{/*             <ul className="char__grid"> */}
+
             <TransitionGroup component="ul" className="char__grid">
                 {items}
             </TransitionGroup>
-{/*             </ul> */}
             <button 
                 className="button button__main button__long"
                 style = {{'display': charEnded ? 'none' : 'block'}}

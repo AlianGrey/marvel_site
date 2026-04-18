@@ -1,5 +1,7 @@
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import { useNavigate } from "react-router-dom";
+import {Helmet} from "react-helmet";
+
 
 const Page404= () => {
     const navigate = useNavigate();
@@ -14,6 +16,10 @@ const Page404= () => {
 
     return (
         <div style={{textAlign: 'center'}}>
+            <Helmet>
+                <title>Error page</title>
+                <meta name="description" content="Error page" />
+            </Helmet>
             <ErrorMessage/>
             <p style={{fontWeight: 'bold', fontSize: '1.8em', lineHeight: '2em', margin: '20px auto'}}>Page doesn't exist</p>
             <button onClick={()=> goBack()} style={{color: 'rgb(57, 66, 205)', padding: '8px 15px', backgroundColor: 'white', borderColor: '#eee'}}>Back to the main page</button>

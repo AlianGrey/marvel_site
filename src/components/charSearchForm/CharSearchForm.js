@@ -8,7 +8,7 @@ import './charSearchForm.scss'
 
 const CharSearchForm = () => {
     const [ char, setChar ] = useState(null)
-    const { loading, error, clearError, getCharacterByName } = useMarvelService()
+    const { error, clearError, getCharacterByName } = useMarvelService()
   
     const onCharLoaded = (char) => {
         setChar(char)
@@ -40,25 +40,29 @@ const CharSearchForm = () => {
                 validationSchema = { Yup.object({
                     charName: Yup.string().required('This field is required!')
                 })}
+                validateOnChange={true}
+                validateOnBlur={true}
                 onSubmit = { ({charName}) => updateChar(charName) }
                 >
-                <Form>
-                    <label className="char__search-label" htmlFor='charName'> Or find a character by name: </label>
-                    <div className="char__search-wrapper">
-                        <Field 
-                        id="charName"
-                        name="charName"
-                        type="text"
-                        placeholder="Enter name" />
-                        <button 
-                            type="submit" 
-                            className="button button__main" 
-                            disabled={loading}>
-                            <div className='inner'> Find  </div>
-                        </button>
-                    </div>
-                    <FormikErrorMessage name='charName' component='div' className='char__search-error'/>
-                </Form>
+                {({ isValid, dirty }) => (
+                    <Form>
+                        <label className="char__search-label" htmlFor='charName'> Or find a character by name: </label>
+                        <div className="char__search-wrapper">
+                            <Field 
+                            id="charName"
+                            name="charName"
+                            type="text"
+                            placeholder="Enter name" />
+                            <button 
+                                type="submit" 
+                                disabled={!(isValid && dirty)}
+                                className="button button__main">
+                                <div className='inner'> Find  </div>
+                            </button>
+                        </div>
+                        <FormikErrorMessage name='charName' component='div' className='char__search-error'/>
+                    </Form>
+                )}
             </Formik>
             {results}
             {errorMessage}

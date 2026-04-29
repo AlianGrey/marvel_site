@@ -13,7 +13,7 @@ const SingleCharacterLayout = lazy( () => import('../pages/singleCharacterLayout
 
 const App = () => {
     return (
-        <Router future={{ v7_startTransition: true,  v7_relativeSplatPath: true }} basename="/marvel_site">
+        <Router future={{ v7_startTransition: true,  v7_relativeSplatPath: true }}>
             <div className="app">
                 <AppHeader/>
                 <main>

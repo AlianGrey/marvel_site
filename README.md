@@ -15,22 +15,44 @@ The application includes dynamic routing, advanced UI interactions, search funct
 
 ## 📸 Screenshots
 
-<p align="center">
-  <img src="src/assets/screenshots/home.png" width="48%"/>
-  <img src="src/assets/screenshots/comics.png" width="48%"/>
-</p>
+<table>
+  <tr>
+    <td align="center">
+      <b>🏠 Home Page</b><br><br>
+      <img src="src/assets/screenshots/home.png" width="400"/>
+    </td>
+    <td align="center">
+      <b>📚 Comics Page</b><br><br>
+      <img src="src/assets/screenshots/comics.png" width="400"/>
+    </td>
+  </tr>
 
-<p align="center">
-  <img src="src/assets/screenshots/character-details.png" width="48%"/>
-  <img src="src/assets/screenshots/comics_page.png" width="48%"/>
-</p>
+  <tr>
+    <td align="center">
+      <b>Charter page</b><br><br>
+      <img src="src/assets/screenshots/character-details.png" width="400"/>
+    </td>
+    <td align="center">
+      <b>Single comic Page</b><br><br>
+      <img src="src/assets/screenshots/comics_page.png" width="400"/>
+    </td>
+  </tr>
 
-<p align="center">
-  <img src=" src/assets/screenshots/random-character.gif" width="100%"/>
-</p>
-<p align="center">
-  <img src="src/assets/screenshots/search.gif" width="100%"/>
-</p>
+  <tr>
+    <td align="center">
+      <b>Random character block</b><br><br>
+      <img src="src/assets/screenshots/random-character.gif" width="100%"/>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <b>Search block</b><br><br>
+      <img src="src/assets/screenshots/search.gif" width="100%"/>
+    </td>
+  </tr>
+
+</table>
 
 ---
 

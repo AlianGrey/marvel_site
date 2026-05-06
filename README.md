@@ -16,18 +16,18 @@ The application includes dynamic routing, advanced UI interactions, search funct
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="assets/screenshots/home.png" width="45%"/>
-  <img src="assets/screenshots/random-character.gif" width="45%"/>
+  <img src=" src/assets/screenshots/home.png" width="45%"/>
+  <img src=" src/assets/screenshots/random-character.gif" width="45%"/>
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/search.gif" width="45%"/>
-  <img src="assets/screenshots/character-details.png" width="45%"/>
+  <img src=" src/assets/screenshots/search.gif" width="45%"/>
+  <img src=" src/assets/screenshots/character-details.png" width="45%"/>
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/comics.png" width="45%"/>
-  <img src="assets/screenshots/comics_page.png" width="45%"/>
+  <img src=" src/assets/screenshots/comics.png" width="45%"/>
+  <img src=" src/assets/screenshots/comics_page.png" width="45%"/>
 </p>
 
 ---
